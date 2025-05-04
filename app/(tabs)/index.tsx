@@ -26,7 +26,15 @@ const mockItems: Item[] = [
     category: "Furniture",
     location: { latitude: 37.7749, longitude: -122.4194 },
   },
-  // Add more mock items...
+  {
+    id: "2",
+    title: "Modern Desk",
+    price: 299,
+    distance: 1.8,
+    image: "https://picsum.photos/201",
+    category: "Furniture",
+    location: { latitude: 37.7750, longitude: -122.4195 },
+  },
 ];
 
 export default function HomeScreen() {
@@ -167,7 +175,7 @@ const styles = StyleSheet.create({
   },
   categoryText: {
     fontSize: 14,
-    color: "#333",
+    color: "#000",
     fontWeight: "500",
   },
   categoryTextSelected: {
