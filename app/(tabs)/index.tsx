@@ -35,6 +35,24 @@ const mockItems: Item[] = [
     category: "Furniture",
     location: { latitude: 37.7750, longitude: -122.4195 },
   },
+  {
+    id: "3",
+    title: "Stylish Sofa",
+    price: 450,
+    distance: 3.1,
+    image: "https://picsum.photos/202",
+    category: "Furniture",
+    location: { latitude: 37.7751, longitude: -122.4196 },
+  },
+    {
+    id: "4",
+    title: "Antique Lamp",
+    price: 75,
+    distance: 0.9,
+    image: "https://picsum.photos/203",
+    category: "Furniture",
+    location: { latitude: 37.7752, longitude: -122.4197 },
+  },
 ];
 
 export default function HomeScreen() {
@@ -234,6 +252,7 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: 16,
     marginBottom: 4,
+    color: "#000", //Added color to text
   },
   chatButton: {
     marginTop: 8,
@@ -243,7 +262,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   chatButtonText: {
-    color: "#fff",
+    color: "#000", //Added color to text
   },
   mapContainer: {
     flex: 1,
