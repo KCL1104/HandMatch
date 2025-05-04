@@ -162,10 +162,10 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   categoryButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    marginRight: 8,
-    borderRadius: 20,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    marginRight: 6,
+    borderRadius: 15,
     backgroundColor: '#f0f0f0',
   },
   categoryButtonSelected: {
