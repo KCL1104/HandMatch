@@ -1,22 +1,29 @@
+import React, { useState, useCallback } from "react";
+import {
+  StyleSheet,
+  FlatList,
+  RefreshControl,
+  TextInput,
+  TouchableOpacity,
+  View,
+  ScrollView,
+} from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 
-import React, { useState, useCallback } from 'react';
-import { StyleSheet, FlatList, RefreshControl, TextInput, TouchableOpacity, View, ScrollView } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
-
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { Item } from '@/types/item';
-import { router } from 'expo-router';
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { Item } from "@/types/item";
+import { router } from "expo-router";
 
 // Mock data - replace with actual API call
 const mockItems: Item[] = [
   {
-    id: '1',
-    title: 'Vintage Chair',
+    id: "1",
+    title: "Vintage Chair",
     price: 150,
     distance: 2.5,
-    image: 'https://picsum.photos/200',
-    category: 'Furniture',
+    image: "https://picsum.photos/200",
+    category: "Furniture",
     location: { latitude: 37.7749, longitude: -122.4194 },
   },
   // Add more mock items...
@@ -24,7 +31,7 @@ const mockItems: Item[] = [
 
 export default function HomeScreen() {
   const [items, setItems] = useState<Item[]>(mockItems);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [showMap, setShowMap] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -46,19 +53,28 @@ export default function HomeScreen() {
         <View style={styles.imagePlaceholder} />
       </View>
       <View style={styles.itemInfo}>
-        <ThemedText type="title" style={styles.itemTitle}>{item.title}</ThemedText>
+        <ThemedText type="title" style={styles.itemTitle}>
+          {item.title}
+        </ThemedText>
         <ThemedText>${item.price}</ThemedText>
         <ThemedText>{item.distance} km away</ThemedText>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.chatButton}
-          onPress={() => router.push(`/chat/${item.id}`)}>
+          onPress={() => router.push(`/chat/${item.id}`)}
+        >
           <ThemedText style={styles.chatButtonText}>Chat with Owner</ThemedText>
         </TouchableOpacity>
       </View>
     </View>
   );
 
-  const filterCategories = ['All', 'Furniture', 'Electronics', 'Fashion', 'Other'];
+  const filterCategories = [
+    "All",
+    "Furniture",
+    "Electronics",
+    "Fashion",
+    "Other",
+  ];
 
   return (
     <ThemedView style={styles.container}>
@@ -69,26 +85,32 @@ export default function HomeScreen() {
           value={searchQuery}
           onChangeText={setSearchQuery}
         />
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.mapButton}
-          onPress={() => setShowMap(!showMap)}>
-          <MaterialIcons name={showMap ? 'grid-view' : 'map'} size={24} color="#000" />
+          onPress={() => setShowMap(!showMap)}
+        >
+          <MaterialIcons
+            name={showMap ? "grid-view" : "map"}
+            size={24}
+            color="#000"
+          />
         </TouchableOpacity>
       </View>
 
-      <ScrollView 
-        horizontal 
+      <ScrollView
+        horizontal
         style={styles.categoryList}
         showsHorizontalScrollIndicator={false}
       >
         {filterCategories.map((item) => (
-          <TouchableOpacity 
+          <TouchableOpacity
             key={item}
             style={[
               styles.categoryButton,
-              selectedCategory === item && styles.categoryButtonSelected
+              selectedCategory === item && styles.categoryButtonSelected,
             ]}
-            onPress={() => setSelectedCategory(item === 'All' ? null : item)}>
+            onPress={() => setSelectedCategory(item === "All" ? null : item)}
+          >
             <ThemedText style={styles.categoryText}>{item}</ThemedText>
           </TouchableOpacity>
         ))}
@@ -118,28 +140,28 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   categoryList: {
-    paddingVertical: 8,
+    paddingVertical: 2,
   },
   categoryButton: {
     paddingHorizontal: 12,
     paddingVertical: 6,
     marginHorizontal: 4,
     borderRadius: 15,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: "#f0f0f0",
   },
   categoryButtonSelected: {
-    backgroundColor: '#007AFF',
+    backgroundColor: "#007AFF",
   },
   categoryText: {
     fontSize: 14,
-    color: '#333',
+    color: "#333",
   },
   container: {
     flex: 1,
     padding: 16,
   },
   header: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginBottom: 16,
     gap: 8,
   },
@@ -148,28 +170,28 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
     paddingHorizontal: 16,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: "#f0f0f0",
   },
   mapButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#f0f0f0',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#f0f0f0",
+    alignItems: "center",
+    justifyContent: "center",
   },
   categoryList: {
     marginBottom: 16,
   },
   categoryButton: {
-    paddingHorizontal: 12,
-    paddingVertical: 4,
+    paddingHorizontal: 14,
+    paddingVertical: 2,
     marginRight: 6,
     borderRadius: 12,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: "#f0f0f0",
   },
   categoryButtonSelected: {
-    backgroundColor: '#000',
+    backgroundColor: "#000",
   },
   itemsGrid: {
     gap: 16,
@@ -178,8 +200,8 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 8,
     borderRadius: 12,
-    backgroundColor: '#fff',
-    shadowColor: '#000',
+    backgroundColor: "#fff",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -188,11 +210,11 @@ const styles = StyleSheet.create({
   imageContainer: {
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   imagePlaceholder: {
     height: 150,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: "#f0f0f0",
   },
   itemInfo: {
     padding: 12,
@@ -205,15 +227,15 @@ const styles = StyleSheet.create({
     marginTop: 8,
     padding: 8,
     borderRadius: 8,
-    backgroundColor: '#007AFF',
-    alignItems: 'center',
+    backgroundColor: "#007AFF",
+    alignItems: "center",
   },
   chatButtonText: {
-    color: '#fff',
+    color: "#fff",
   },
   mapContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
