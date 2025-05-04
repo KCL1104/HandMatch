@@ -97,24 +97,29 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </View>
 
-      <ScrollView
-        horizontal
-        style={styles.categoryList}
-        showsHorizontalScrollIndicator={false}
-      >
-        {filterCategories.map((item) => (
-          <TouchableOpacity
-            key={item}
-            style={[
-              styles.categoryButton,
-              selectedCategory === item && styles.categoryButtonSelected,
-            ]}
-            onPress={() => setSelectedCategory(item === "All" ? null : item)}
-          >
-            <ThemedText style={styles.categoryText}>{item}</ThemedText>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+      <View style={styles.categoryContainer}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.categoryList}
+        >
+          {filterCategories.map((item) => (
+            <TouchableOpacity
+              key={item}
+              style={[
+                styles.categoryButton,
+                selectedCategory === item && styles.categoryButtonSelected,
+              ]}
+              onPress={() => setSelectedCategory(item === "All" ? null : item)}
+            >
+              <ThemedText style={[
+                styles.categoryText,
+                selectedCategory === item && styles.categoryTextSelected,
+              ]}>{item}</ThemedText>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
 
       {!showMap ? (
         <FlatList
@@ -139,23 +144,29 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  categoryList: {
-    paddingVertical: 8,
+  categoryContainer: {
     marginBottom: 16,
   },
-  categoryButton: {
+  categoryList: {
     paddingHorizontal: 16,
     paddingVertical: 8,
-    marginRight: 8,
-    borderRadius: 20,
+    gap: 8,
+  },
+  categoryButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
     backgroundColor: "#f0f0f0",
   },
   categoryButtonSelected: {
-    backgroundColor: "#000",
+    backgroundColor: "#007AFF",
   },
   categoryText: {
-    fontSize: 14,
+    fontSize: 13,
     color: "#333",
+  },
+  categoryTextSelected: {
+    color: "#fff",
   },
   container: {
     flex: 1,
