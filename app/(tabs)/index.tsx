@@ -76,22 +76,23 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </View>
 
-      <FlatList
-        horizontal
-        data={filterCategories}
-        renderItem={({ item }) => (
+      <ScrollView 
+        horizontal 
+        style={styles.categoryList}
+        showsHorizontalScrollIndicator={false}
+      >
+        {filterCategories.map((item) => (
           <TouchableOpacity 
+            key={item}
             style={[
               styles.categoryButton,
               selectedCategory === item && styles.categoryButtonSelected
             ]}
             onPress={() => setSelectedCategory(item === 'All' ? null : item)}>
-            <ThemedText>{item}</ThemedText>
+            <ThemedText style={styles.categoryText}>{item}</ThemedText>
           </TouchableOpacity>
-        )}
-        style={styles.categoryList}
-        showsHorizontalScrollIndicator={false}
-      />
+        ))}
+      </ScrollView>
 
       {!showMap ? (
         <FlatList
@@ -116,6 +117,23 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  categoryList: {
+    paddingVertical: 8,
+  },
+  categoryButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    marginHorizontal: 4,
+    borderRadius: 15,
+    backgroundColor: '#f0f0f0',
+  },
+  categoryButtonSelected: {
+    backgroundColor: '#007AFF',
+  },
+  categoryText: {
+    fontSize: 14,
+    color: '#333',
+  },
   container: {
     flex: 1,
     padding: 16,
