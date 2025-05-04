@@ -153,17 +153,22 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   categoryButton: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 16,
-    backgroundColor: "#f0f0f0",
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#E5E5E5",
+    marginRight: 8,
   },
   categoryButtonSelected: {
     backgroundColor: "#007AFF",
+    borderColor: "#007AFF",
   },
   categoryText: {
-    fontSize: 13,
+    fontSize: 14,
     color: "#333",
+    fontWeight: "500",
   },
   categoryTextSelected: {
     color: "#fff",
