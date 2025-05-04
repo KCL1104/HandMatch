@@ -11,6 +11,7 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 
 import { ThemedText } from "@/components/ThemedText";
+import { ItemCard } from "@/components/ItemCard";
 import { ThemedView } from "@/components/ThemedView";
 import { Item } from "@/types/item";
 import { router } from "expo-router";
@@ -73,25 +74,7 @@ export default function HomeScreen() {
   };
 
   const renderItem = ({ item }: { item: Item }) => (
-    <View style={styles.itemCard}>
-      <View style={styles.imageContainer}>
-        {/* Replace with actual image component */}
-        <View style={styles.imagePlaceholder} />
-      </View>
-      <View style={styles.itemInfo}>
-        <ThemedText type="title" style={styles.itemTitle}>
-          {item.title}
-        </ThemedText>
-        <ThemedText>${item.price}</ThemedText>
-        <ThemedText>{item.distance} km away</ThemedText>
-        <TouchableOpacity
-          style={styles.chatButton}
-          onPress={() => router.push(`/chat/${item.id}`)}
-        >
-          <ThemedText style={styles.chatButtonText}>Chat with Owner</ThemedText>
-        </TouchableOpacity>
-      </View>
-    </View>
+    <ItemCard item={item} />
   );
 
   const filterCategories = [
