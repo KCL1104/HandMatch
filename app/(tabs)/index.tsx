@@ -140,17 +140,18 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   categoryList: {
-    paddingVertical: 2,
+    paddingVertical: 8,
+    marginBottom: 16,
   },
   categoryButton: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    marginHorizontal: 4,
-    borderRadius: 15,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    marginRight: 8,
+    borderRadius: 20,
     backgroundColor: "#f0f0f0",
   },
   categoryButtonSelected: {
-    backgroundColor: "#007AFF",
+    backgroundColor: "#000",
   },
   categoryText: {
     fontSize: 14,
@@ -179,19 +180,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#f0f0f0",
     alignItems: "center",
     justifyContent: "center",
-  },
-  categoryList: {
-    marginBottom: 16,
-  },
-  categoryButton: {
-    paddingHorizontal: 14,
-    paddingVertical: 2,
-    marginRight: 6,
-    borderRadius: 12,
-    backgroundColor: "#f0f0f0",
-  },
-  categoryButtonSelected: {
-    backgroundColor: "#000",
   },
   itemsGrid: {
     gap: 16,
