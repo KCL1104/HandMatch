@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { StyleSheet, View, FlatList, TextInput, TouchableOpacity, Image, Dimensions } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -74,7 +73,7 @@ export default function ChatScreen() {
       <View style={styles.header}>
         <ThemedText type="title" style={styles.headerTitle}>Messages</ThemedText>
       </View>
-      
+
       <View style={styles.searchContainer}>
         <MaterialIcons name="search" size={24} color="#666" style={styles.searchIcon} />
         <TextInput
@@ -110,6 +109,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: '#000', // Added color for header title
   },
   searchContainer: {
     flexDirection: 'row',
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     fontSize: 16,
-    color: '#000',
+    color: '#000', // Changed color to black
   },
   chatList: {
     paddingHorizontal: 16,
@@ -153,10 +153,11 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: 16,
     fontWeight: '600',
+    color: '#000', // Added color for item title
   },
   timestamp: {
     fontSize: 12,
-    color: '#666',
+    color: '#333', // Changed color to darker gray
   },
   messagePreview: {
     flexDirection: 'row',
@@ -170,12 +171,12 @@ const styles = StyleSheet.create({
   ownerName: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#666',
+    color: '#000', // Changed color to black
     marginBottom: 2,
   },
   lastMessage: {
     fontSize: 14,
-    color: '#666',
+    color: '#000', // Changed color to black
     numberOfLines: 1,
   },
   itemImage: {

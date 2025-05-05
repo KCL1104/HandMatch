@@ -145,6 +145,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 16,
     fontSize: 16,
+    color: '#000',
   },
   logoutButton: {
     marginTop: 16,
