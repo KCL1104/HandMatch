@@ -23,7 +23,7 @@ export function ItemCard({ item }: ItemCardProps) {
         <ThemedText type="title" style={styles.itemTitle}>
           {item.title}
         </ThemedText>
-        <ThemedText style={styles.price}>${item.price}</ThemedText>
+        <ThemedText style={styles.price}>${item.price}/hr</ThemedText>
         <ThemedText style={styles.distance}>{item.distance} km away</ThemedText>
         <TouchableOpacity
           style={styles.chatButton}
