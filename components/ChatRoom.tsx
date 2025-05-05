@@ -53,7 +53,10 @@ export function ChatRoom({ chatId }: { chatId: string }) {
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
           <MaterialIcons name="arrow-back" size={24} color="#000" />
         </TouchableOpacity>
-        <ThemedText type="title" style={styles.headerTitle}>Chat</ThemedText>
+        <View style={styles.headerInfo}>
+          <ThemedText style={styles.headerName}>John Doe</ThemedText>
+          <ThemedText style={styles.headerItem}>Vintage Chair</ThemedText>
+        </View>
       </View>
       
       <FlatList
@@ -86,7 +89,7 @@ export function ChatRoom({ chatId }: { chatId: string }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f5f5f5',
   },
   header: {
     flexDirection: 'row',
@@ -94,6 +97,19 @@ const styles = StyleSheet.create({
     padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
+    backgroundColor: '#fff',
+  },
+  headerInfo: {
+    flex: 1,
+  },
+  headerName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 2,
+  },
+  headerItem: {
+    fontSize: 14,
+    color: '#666',
   },
   backButton: {
     marginRight: 16,
