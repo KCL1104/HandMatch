@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { StyleSheet, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -45,25 +44,25 @@ export default function ProfileScreen() {
             <ThemedText style={styles.settingText}>Account Settings</ThemedText>
             <MaterialIcons name="chevron-right" size={24} color="#666" />
           </TouchableOpacity>
-          
+
           <TouchableOpacity style={styles.settingItem}>
             <MaterialIcons name="notifications" size={24} color="#666" />
             <ThemedText style={styles.settingText}>Notifications</ThemedText>
             <MaterialIcons name="chevron-right" size={24} color="#666" />
           </TouchableOpacity>
-          
+
           <TouchableOpacity style={styles.settingItem}>
             <MaterialIcons name="security" size={24} color="#666" />
             <ThemedText style={styles.settingText}>Privacy & Security</ThemedText>
             <MaterialIcons name="chevron-right" size={24} color="#666" />
           </TouchableOpacity>
-          
+
           <TouchableOpacity style={styles.settingItem}>
             <MaterialIcons name="help" size={24} color="#666" />
             <ThemedText style={styles.settingText}>Help & Support</ThemedText>
             <MaterialIcons name="chevron-right" size={24} color="#666" />
           </TouchableOpacity>
-          
+
           <TouchableOpacity style={[styles.settingItem, styles.logoutButton]}>
             <MaterialIcons name="logout" size={24} color="#FF4444" />
             <ThemedText style={[styles.settingText, styles.logoutText]}>Log Out</ThemedText>
@@ -94,6 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 4,
+    color: '#000',
   },
   email: {
     fontSize: 16,
@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 4,
+    color: '#000',
   },
   statLabel: {
     fontSize: 14,
