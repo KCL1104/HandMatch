@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -10,7 +11,6 @@ export default function ProfileScreen() {
 
   const connectWallet = async () => {
     // TODO: Implement actual Solana wallet connection
-    // This is a placeholder for now
     setConnected(true);
     setPublicKey('7x4Vn...3pLL');
   };
@@ -31,13 +31,35 @@ export default function ProfileScreen() {
   return (
     <ThemedView style={styles.container}>
       <View style={styles.header}>
+        <Image
+          style={styles.profileImage}
+          source={{ uri: 'https://picsum.photos/200' }}
+        />
+        <ThemedText style={styles.username}>User123</ThemedText>
         <ThemedText style={styles.walletAddress}>Wallet: {publicKey}</ThemedText>
-        <TouchableOpacity style={styles.disconnectButton} onPress={() => setConnected(false)}>
-          <ThemedText style={styles.disconnectButtonText}>Disconnect</ThemedText>
-        </TouchableOpacity>
+        <View style={styles.statsContainer}>
+          <View style={styles.stat}>
+            <ThemedText style={styles.statNumber}>12</ThemedText>
+            <ThemedText style={styles.statLabel}>Listed</ThemedText>
+          </View>
+          <View style={styles.stat}>
+            <ThemedText style={styles.statNumber}>8</ThemedText>
+            <ThemedText style={styles.statLabel}>Rented</ThemedText>
+          </View>
+          <View style={styles.stat}>
+            <ThemedText style={styles.statNumber}>4.9</ThemedText>
+            <ThemedText style={styles.statLabel}>Rating</ThemedText>
+          </View>
+        </View>
       </View>
 
       <View style={styles.settingsContainer}>
+        <TouchableOpacity style={styles.settingItem}>
+          <MaterialIcons name="account-circle" size={24} color="#666" />
+          <ThemedText style={styles.settingText}>Edit Profile</ThemedText>
+          <MaterialIcons name="chevron-right" size={24} color="#666" />
+        </TouchableOpacity>
+
         <TouchableOpacity style={styles.settingItem}>
           <MaterialIcons name="account-balance-wallet" size={24} color="#666" />
           <ThemedText style={styles.settingText}>Wallet Settings</ThemedText>
@@ -48,6 +70,26 @@ export default function ProfileScreen() {
           <MaterialIcons name="history" size={24} color="#666" />
           <ThemedText style={styles.settingText}>Transaction History</ThemedText>
           <MaterialIcons name="chevron-right" size={24} color="#666" />
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.settingItem}>
+          <MaterialIcons name="notifications" size={24} color="#666" />
+          <ThemedText style={styles.settingText}>Notifications</ThemedText>
+          <MaterialIcons name="chevron-right" size={24} color="#666" />
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.settingItem}>
+          <MaterialIcons name="help" size={24} color="#666" />
+          <ThemedText style={styles.settingText}>Help & Support</ThemedText>
+          <MaterialIcons name="chevron-right" size={24} color="#666" />
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={[styles.settingItem, styles.disconnectItem]} 
+          onPress={() => setConnected(false)}
+        >
+          <MaterialIcons name="logout" size={24} color="#FF4444" />
+          <ThemedText style={[styles.settingText, styles.disconnectText]}>Disconnect Wallet</ThemedText>
         </TouchableOpacity>
       </View>
     </ThemedView>
@@ -65,21 +107,52 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    color: '#000',
-  },
   header: {
     alignItems: 'center',
     padding: 20,
     backgroundColor: '#f5f5f5',
   },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 12,
+  },
+  username: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 4,
+    color: '#000',
+  },
   walletAddress: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#666',
     marginBottom: 16,
+  },
+  statsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    paddingHorizontal: 20,
+    marginTop: 10,
+  },
+  stat: {
+    alignItems: 'center',
+  },
+  statNumber: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  statLabel: {
+    fontSize: 14,
+    color: '#666',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    color: '#000',
   },
   connectButton: {
     paddingHorizontal: 32,
@@ -91,16 +164,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: '600',
-  },
-  disconnectButton: {
-    paddingHorizontal: 20,
-    paddingVertical: 8,
-    backgroundColor: '#FF4444',
-    borderRadius: 20,
-  },
-  disconnectButtonText: {
-    color: '#fff',
-    fontWeight: '500',
   },
   settingsContainer: {
     backgroundColor: '#fff',
@@ -119,5 +182,11 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     fontSize: 16,
     color: '#000',
+  },
+  disconnectItem: {
+    marginTop: 16,
+  },
+  disconnectText: {
+    color: '#FF4444',
   },
 });
