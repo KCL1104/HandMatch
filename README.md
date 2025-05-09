@@ -32,6 +32,45 @@ app/
 └── constants/       # Theme and configuration
 ```
 
+## Build Configuration
+
+### Prerequisites
+- Node.js 20+ (automatically provided by Replit)
+- Expo CLI
+- Android Studio or Expo Go app for testing
+
+### Environment Setup
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Configure Solana Mobile Wallet Adapter:
+```bash
+npm install @solana/web3.js @solana-mobile/mobile-wallet-adapter-protocol-web3js @solana-mobile/mobile-wallet-adapter-protocol buffer
+npx expo install expo-crypto
+```
+
+### Development
+1. Start the development server:
+- Click the "Run" button in Replit, or
+- Run `npx expo start` in the console
+
+2. Test the app:
+- Scan QR code with Expo Go (Android)
+- Use Android Studio for development build
+- Web preview in Replit
+
+### Building for Android
+1. Configure EAS Build:
+```bash
+npx eas init
+```
+
+2. Create preview build:
+- Use the "EAS Publish Preview Android" workflow
+- Or run: `npx eas build --platform android --profile preview`
+
 ## Development
 
 The app uses Expo's development server. After starting the app:
