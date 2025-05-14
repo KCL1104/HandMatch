@@ -1,0 +1,355 @@
+{
+  "address": "Dh1N1esPsvQdgakyM13S3CMFzT2jzDeKbNKerx1vK6Jw",
+  "metadata": {
+    "name": "item_registration",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "initialize_registry",
+      "discriminator": [
+        189,
+        181,
+        20,
+        17,
+        174,
+        57,
+        249,
+        59
+      ],
+      "accounts": [
+        {
+          "name": "item_registry",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "register_item",
+      "discriminator": [
+        88,
+        92,
+        1,
+        145,
+        20,
+        252,
+        237,
+        209
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "item_account",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "item_registry",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "price_per_hour",
+          "type": "u64"
+        },
+        {
+          "name": "price_per_day",
+          "type": "u64"
+        },
+        {
+          "name": "metadata_uri",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "remove_item",
+      "discriminator": [
+        4,
+        100,
+        172,
+        207,
+        1,
+        194,
+        26,
+        190
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "item_account"
+          ]
+        },
+        {
+          "name": "item_account",
+          "writable": true
+        },
+        {
+          "name": "item_registry",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "set_item_availability",
+      "discriminator": [
+        92,
+        70,
+        250,
+        62,
+        122,
+        12,
+        138,
+        84
+      ],
+      "accounts": [
+        {
+          "name": "item_account",
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "signer": true,
+          "relations": [
+            "item_account"
+          ]
+        }
+      ],
+      "args": [
+        {
+          "name": "available",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "update_item",
+      "discriminator": [
+        28,
+        222,
+        44,
+        175,
+        216,
+        228,
+        171,
+        184
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "item_account"
+          ]
+        },
+        {
+          "name": "item_account",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": {
+            "option": "string"
+          }
+        },
+        {
+          "name": "description",
+          "type": {
+            "option": "string"
+          }
+        },
+        {
+          "name": "price_per_hour",
+          "type": {
+            "option": "u64"
+          }
+        },
+        {
+          "name": "price_per_day",
+          "type": {
+            "option": "u64"
+          }
+        },
+        {
+          "name": "is_available",
+          "type": {
+            "option": "bool"
+          }
+        },
+        {
+          "name": "metadata_uri",
+          "type": {
+            "option": "string"
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "ItemAccount",
+      "discriminator": [
+        203,
+        112,
+        16,
+        182,
+        215,
+        183,
+        63,
+        175
+      ]
+    },
+    {
+      "name": "ItemRegistry",
+      "discriminator": [
+        105,
+        0,
+        243,
+        110,
+        41,
+        184,
+        118,
+        81
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "NameTooLong",
+      "msg": "Item name is too long. Max 60 characters allowed."
+    },
+    {
+      "code": 6001,
+      "name": "DescriptionTooLong",
+      "msg": "Item description is too long. Max 250 characters allowed."
+    },
+    {
+      "code": 6002,
+      "name": "InvalidPrice",
+      "msg": "Price must be greater than zero."
+    },
+    {
+      "code": 6003,
+      "name": "RegistryFull",
+      "msg": "Item registry is full. Cannot register more items."
+    },
+    {
+      "code": 6004,
+      "name": "ItemNotFound",
+      "msg": "Item not found in registry."
+    },
+    {
+      "code": 6005,
+      "name": "Unauthorized",
+      "msg": "Unauthorized to perform this action."
+    },
+    {
+      "code": 6006,
+      "name": "MetadataUriTooLong",
+      "msg": "Metadata URI is too long. Max 200 characters allowed."
+    },
+    {
+      "code": 6007,
+      "name": "PriceCalculationOverflow",
+      "msg": "Price calculation resulted in an overflow."
+    }
+  ],
+  "types": [
+    {
+      "name": "ItemAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "item_id",
+            "type": "u64"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "price_per_hour",
+            "type": "u64"
+          },
+          {
+            "name": "price_per_day",
+            "type": "u64"
+          },
+          {
+            "name": "is_available",
+            "type": "bool"
+          },
+          {
+            "name": "metadata_uri",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ItemRegistry",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "next_item_id",
+            "type": "u64"
+          },
+          {
+            "name": "item_ids",
+            "type": {
+              "vec": "u64"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
